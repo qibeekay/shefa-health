@@ -41,12 +41,12 @@ const Support = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link
-            to="/coaching"
+          <a
+            href="/coaching"
             className="inline-flex items-center bg-white text-teal-900 px-8 py-4 rounded-lg hover:bg-teal-50 transition-colors text-lg"
           >
             Start Your Journey <ArrowRight className="ml-2" size={20} />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

@@ -2,10 +2,10 @@ import { Facebook, Instagram, Leaf, Mail } from "lucide-react";
 import { getImageSrc } from "../utils/imageUtils";
 
 const quickLinks = [
-  { name: "Home", path: "#home" },
-  { name: "About", path: "#about" },
-  { name: "Services", path: "#services" },
-  { name: "Contact", path: "#contact" },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Coaching", path: "/coaching" },
+  { name: "Contact", path: "/contactus" },
 ];
 
 const services = [

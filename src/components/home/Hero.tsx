@@ -25,12 +25,12 @@ const Hero = () => {
               As your Coach, I'm here to guide you with compassion and expertise
               every step of the way.
             </p>
-            <Link
-              to="/coaching"
+            <a
+              href="/coaching"
               className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors"
             >
               Get Started <ArrowRight className="ml-2" size={20} />
-            </Link>
+            </a>
           </div>
           <div className="grid place-items-end">
             <div className="relative max-w-[563px] ">

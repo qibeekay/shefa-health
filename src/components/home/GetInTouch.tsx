@@ -19,18 +19,18 @@ const GetInTouch = () => {
           path forward
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
-          <Link
-            to="/coaching"
+          <a
+            href="/coaching"
             className="inline-flex items-center border-2 border-primary bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors text-lg"
           >
             Schedule Your Call <ArrowRight className="ml-2" size={20} />
-          </Link>
-          <Link
-            to="/coaching"
+          </a>
+          <a
+            href="/coaching"
             className="inline-flex items-center border-2 border-primary text-primary px-8 py-4 rounded-lg transition-colors text-lg"
           >
             Get in Touch <Mail className="ml-2" size={20} />
-          </Link>
+          </a>
         </div>
 
         {/* Contact info cards */}
