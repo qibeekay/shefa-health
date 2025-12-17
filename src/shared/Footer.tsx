@@ -104,8 +104,12 @@ const Footer = () => {
               Get in Touch
             </h4>
             <div className="space-y-3 text-sm text-primary-foreground/70">
-              <p>hello@shefahealth.com</p>
-              <p>Mon - Fri: 9am - 5pm</p>
+              <p>Shefahealthcoachingsm@gmail.com</p>
+              <p>07428697038</p>
+              <p>
+                <span className="font-bold">Address:</span> 38 london road
+                Tilbury Rm18 8du United Kingdom
+              </p>
             </div>
             <div className="mt-6 p-4 rounded-xl bg-primary-foreground/10">
               <div className="flex items-center gap-2 mb-2">

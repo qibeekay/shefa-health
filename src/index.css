@@ -2,28 +2,6 @@
 @import "tailwindcss";
 
 @theme {
-  --hero-gradient: linear-gradient(
-    135deg,
-    hsl(188 55% 25%) 0%,
-    hsl(188 45% 20%) 100%
-  );
-  --card-gradient: linear-gradient(
-    180deg,
-    hsl(30 25% 97%) 0%,
-    hsl(30 20% 95%) 100%
-  );
-  --text-gradient: linear-gradient(
-    135deg,
-    hsl(24 85% 55%) 0%,
-    hsl(185 70% 45%) 100%
-  );
-
-  --color-button: linear-gradient(
-    135deg,
-    hsl(24 85% 55%) 0%,
-    hsl(18 80% 50%) 100%
-  );
-
   --color-border: hsl(188 20% 85%);
   --color-background: hsl(30 20% 98%);
   --color-foreground: hsl(188 45% 18%);
@@ -49,4 +27,12 @@
   body {
     font-family: var(--font-primary);
   }
+}
+
+.grad {
+  background: linear-gradient(
+    135deg,
+    hsl(188 55% 25%) 0%,
+    hsl(188 45% 20%) 100%
+  );
 }

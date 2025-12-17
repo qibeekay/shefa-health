@@ -25,12 +25,6 @@ const ServiceOverview = () => {
               hormones naturally, and restore your wellbeing with evidence-based
               strategies.
             </p>
-            <Link
-              to="/coaching"
-              className="text-teal-700 hover:text-teal-800 inline-flex items-center"
-            >
-              Learn More <ArrowRight className="ml-2" size={16} />
-            </Link>
           </div>
 
           <div className="bg-orange-50 p-8 rounded-2xl hover:shadow-lg transition-shadow">
@@ -43,12 +37,6 @@ const ServiceOverview = () => {
               practical tools for hormone harmony, stress relief, and energy
               restoration.
             </p>
-            <Link
-              to="/courses"
-              className="text-orange-700 hover:text-orange-800 inline-flex items-center"
-            >
-              Explore Courses <ArrowRight className="ml-2" size={16} />
-            </Link>
           </div>
 
           <div className="bg-teal-50 p-8 rounded-2xl hover:shadow-lg transition-shadow">
@@ -61,12 +49,6 @@ const ServiceOverview = () => {
               coaching, exclusive resources, and ongoing guidance for your
               wellbeing journey.
             </p>
-            <Link
-              to="/membership"
-              className="text-teal-700 hover:text-teal-800 inline-flex items-center"
-            >
-              Join Community <ArrowRight className="ml-2" size={16} />
-            </Link>
           </div>
         </div>
       </div>
