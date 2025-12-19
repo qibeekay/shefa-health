@@ -1,8 +1,23 @@
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import React, { useState } from "react";
 
+// Define types for form data and API response
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+interface EmailResponse {
+  success: boolean;
+  message?: string;
+  error?: string;
+}
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
@@ -10,13 +25,209 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  // Reni Mail API endpoint and configuration
+  const RENI_MAIL_API_URL = import.meta.env.VITE_API_URL;
+
+  // You should move this to environment variables in production
+  const KEY = import.meta.env.VITE_BEARER_TOKEN; // Get from Reni dashboard
+
+  console.log(KEY);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert(
-      "Thank you for your message! I will get back to you within 24-48 hours."
-    );
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      // Prepare email content
+      const emailBody = `
+        <html>
+          <head>
+            <style>
+              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+              .header { background: #f5f5f5; padding: 20px; border-radius: 5px; }
+              .field { margin-bottom: 15px; }
+              .label { font-weight: bold; color: #0f766e; }
+              .message { white-space: pre-wrap; background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #0f766e; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h2 style="color: #0f766e; margin-top: 0;">New Contact Form Submission</h2>
+                <p>You have received a new message from your website contact form.</p>
+              </div>
+              
+              <div class="field">
+                <span class="label">Name:</span><br />
+                ${formData.name}
+              </div>
+              
+              <div class="field">
+                <span class="label">Email:</span><br />
+                <a href="mailto:${formData.email}">${formData.email}</a>
+              </div>
+              
+              ${
+                formData.phone
+                  ? `
+              <div class="field">
+                <span class="label">Phone:</span><br />
+                ${formData.phone}
+              </div>
+              `
+                  : ""
+              }
+              
+              <div class="field">
+                <span class="label">Subject:</span><br />
+                ${formData.subject || "Not specified"}
+              </div>
+              
+              <div class="field">
+                <span class="label">Message:</span>
+                <div class="message">
+                  ${formData.message.replace(/\n/g, "<br>")}
+                </div>
+              </div>
+              
+              <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+              <p style="color: #666; font-size: 12px;">
+                This message was sent from your website contact form on ${new Date().toLocaleString()}.
+              </p>
+            </div>
+          </body>
+        </html>
+      `;
+
+      // Prepare the API request payload
+      const payload = {
+        email: "Shefahealthcoachingsm@gmail.com", // Your email to receive messages
+        subject: `New Contact Form: ${
+          formData.subject || "General Inquiry"
+        } - ${formData.name}`,
+        sender_name: `${formData.name} (via Website)`,
+        reply_to: formData.email,
+        reply_name: formData.name,
+        body: emailBody,
+        html: "true",
+      };
+
+      // Send email using Reni Mail API
+      const response = await fetch(`${RENI_MAIL_API_URL}/sendSingleMail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${KEY}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Success - also send confirmation email to user
+        await sendConfirmationEmail(formData.email, formData.name);
+
+        setSubmitMessage(
+          "Thank you for your message! I will get back to you within 24-48 hours."
+        );
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.error || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitMessage(
+        "Sorry, there was an error sending your message. Please try again or email me directly at Shefahealthcoachingsm@gmail.com"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Send confirmation email to the user
+  const sendConfirmationEmail = async (userEmail: string, userName: string) => {
+    try {
+      const confirmationPayload = {
+        email: userEmail,
+        subject: "Thank You for Reaching Out!",
+        sender_name: "Shefa Health Coaching",
+        reply_to: "Shefahealthcoachingsm@gmail.com",
+        reply_name: "Shefa Health Coaching",
+        body: `
+          <html>
+            <head>
+              <style>
+                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: #f0f9ff; padding: 30px; text-align: center; border-radius: 10px; }
+                .content { padding: 20px; }
+                .highlight { color: #0f766e; font-weight: bold; }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1 style="color: #0f766e; margin: 0;">Thank You for Reaching Out!</h1>
+                </div>
+                
+                <div class="content">
+                  <p>Hi ${userName},</p>
+                  
+                  <p>Thank you for contacting <span class="highlight">Shefa Health Coaching</span>! I've received your message and will get back to you within <span class="highlight">24-48 hours</span>.</p>
+                  
+                  <p>In the meantime, feel free to:</p>
+                  <ul>
+                    <li>Explore my wellness resources</li>
+                    <li>Follow my journey on social media</li>
+                    <li>Check out upcoming workshops and courses</li>
+                  </ul>
+                  
+                  <p><strong>Your privacy matters:</strong> All information shared is kept confidential and will only be used to respond to your inquiry.</p>
+                  
+                  <p>Warmly,<br />
+                  <strong>Shefa Health Coaching</strong></p>
+                  
+                  <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;" />
+                  
+                  <p style="color: #666; font-size: 12px;">
+                    <strong>Contact Information:</strong><br />
+                    Email: Shefahealthcoachingsm@gmail.com<br />
+                    Location: 38 London Road, Tilbury RM18 8DU, United Kingdom
+                  </p>
+                </div>
+              </div>
+            </body>
+          </html>
+        `,
+        html: "true",
+      };
+
+      await fetch(RENI_MAIL_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${KEY}`,
+        },
+        body: JSON.stringify(confirmationPayload),
+      });
+    } catch (error) {
+      console.error("Error sending confirmation email:", error);
+      // Don't show error to user - main form submission was successful
+    }
   };
 
   const handleChange = (
@@ -29,6 +240,7 @@ const ContactForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <section className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +262,7 @@ const ContactForm = () => {
                 <div>
                   <h3 className="text-lg mb-0.5 text-teal-900">Email</h3>
                   <a
-                    href="mailto:hello@shefahealth.com"
+                    href="mailto:Shefahealthcoachingsm@gmail.com"
                     className="text-gray-700 hover:text-teal-700"
                   >
                     Shefahealthcoachingsm@gmail.com
@@ -75,7 +287,7 @@ const ContactForm = () => {
                 <div>
                   <h3 className="text-lg mb-0.5 text-teal-900">Location</h3>
                   <p className="text-gray-700">
-                    38 london road Tilbury Rm18 8du United Kingdom
+                    38 London Road, Tilbury RM18 8DU, United Kingdom
                   </p>
                 </div>
               </div>
@@ -126,6 +338,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Enter your full name"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -147,6 +360,7 @@ const ContactForm = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                       placeholder="your@email.com"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -165,6 +379,7 @@ const ContactForm = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                       placeholder="+44 123 456 7890"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -184,6 +399,7 @@ const ContactForm = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    disabled={isSubmitting}
                   >
                     <option value="">Select a topic...</option>
                     <option value="coaching">Book a Coaching Session</option>
@@ -212,6 +428,7 @@ const ContactForm = () => {
                     rows={6}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
                     placeholder="Tell me a bit about what you're looking for and how I can support you..."
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -225,13 +442,40 @@ const ContactForm = () => {
                   </p>
                 </div>
 
+                {/* Submit Message */}
+                {submitMessage && (
+                  <div
+                    className={`p-4 rounded-lg ${
+                      submitMessage.includes("Thank you")
+                        ? "bg-green-50 text-green-700 border border-green-200"
+                        : "bg-red-50 text-red-700 border border-red-200"
+                    }`}
+                  >
+                    {submitMessage}
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center text-lg cursor-pointer"
+                  disabled={isSubmitting}
+                  className={`w-full bg-primary text-white px-8 py-4 rounded-lg transition-colors flex items-center justify-center text-lg ${
+                    isSubmitting
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:bg-primary/90 cursor-pointer"
+                  }`}
                 >
-                  <Send className="mr-2" size={20} />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2" size={20} />
+                      Send Message
+                    </>
+                  )}
                 </button>
 
                 <p className="text-sm text-gray-600 text-center">
