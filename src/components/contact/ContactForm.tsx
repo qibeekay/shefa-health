@@ -34,8 +34,6 @@ const ContactForm = () => {
   // You should move this to environment variables in production
   const KEY = import.meta.env.VITE_BEARER_TOKEN; // Get from Reni dashboard
 
-  console.log(KEY);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
