@@ -104,7 +104,7 @@ const ContactForm = () => {
 
       // Prepare the API request payload
       const payload = {
-        email: "Shefahealthcoachingsm@gmail.com", // Your email to receive messages
+        email: "wholenesshavenweb@gmail.com", // Your email to receive messages
         subject: `New Contact Form: ${
           formData.subject || "General Inquiry"
         } - ${formData.name}`,
@@ -163,7 +163,7 @@ const ContactForm = () => {
         email: userEmail,
         subject: "Thank You for Reaching Out!",
         sender_name: "Shefa Health Coaching",
-        reply_to: "Shefahealthcoachingsm@gmail.com",
+        reply_to: "wholenesshavenweb@gmail.com",
         reply_name: "Shefa Health Coaching",
         body: `
           <html>
@@ -214,7 +214,7 @@ const ContactForm = () => {
         html: "true",
       };
 
-      await fetch(RENI_MAIL_API_URL, {
+      await fetch(`${RENI_MAIL_API_URL}/sendSingleMail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

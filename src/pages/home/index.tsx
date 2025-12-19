@@ -2,6 +2,7 @@ import Hero from "../../components/home/Hero";
 import Desc from "../../components/home/Desc";
 import ServiceOverview from "../../components/home/ServiceOverview";
 import GetInTouch from "../../components/home/GetInTouch";
+import Credential from "../../components/home/Credential";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Desc />
       <ServiceOverview />
       <GetInTouch />
+      <Credential />
     </div>
   );
 };

@@ -75,7 +75,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <a
-              href="#contact" // Add your actual contact URL
+              href="/contactus" // Add your actual contact URL
               className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors cursor-pointer"
             >
               Free Discovery Call
@@ -111,7 +111,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact" // Add your actual contact URL
+                href="/contactus" // Add your actual contact URL
                 className="mt-2 inline-flex items-center justify-center bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors cursor-pointer"
                 onClick={() => setIsOpen(false)}
               >

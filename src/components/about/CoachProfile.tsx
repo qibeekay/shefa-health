@@ -7,12 +7,12 @@ const CoachProfile = () => {
     <section className="py-32 bg-teal-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="max-w-[600px]">
+          <div className="max-w-150">
             <div className="bg-white p-6 rounded-2xl shadow-lg">
               <img
-                src={getImageSrc("img-5.jpg")}
+                src={getImageSrc("img-6.jpg")}
                 alt="Professional wellness coach"
-                className="rounded-xl w-full h-[600px] object-cover"
+                className="rounded-xl w-full h-150 object-cover"
               />
             </div>
           </div>
