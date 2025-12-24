@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 const ServiceOverview = () => {
   return (
     <section className="py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl mb-4 text-teal-900">How I Can Support You</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className=" text-[30px] md:text-4xl mb-4 text-teal-900">
+            How I Can Support You
+          </h2>
+          <p className=" text-[18px] md:text-xl text-gray-600 max-w-2xl mx-auto">
             Comprehensive support tailored to your unique journey through
             midlife
           </p>

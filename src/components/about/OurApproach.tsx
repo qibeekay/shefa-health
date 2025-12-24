@@ -6,8 +6,10 @@ const OurApproach = () => {
     <section className="py-32 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl mb-6 text-primary">My Coaching Approach</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className=" text-[30px] sm:text-4xl mb-6 text-primary">
+            My Coaching Approach
+          </h2>
+          <p className=" text-[16px] sm:text-xl text-gray-600 max-w-3xl mx-auto">
             My work is grounded in evidence, empathy, and a deep commitment to
             your wellbeing
           </p>
@@ -67,7 +69,7 @@ const OurApproach = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-lg text-gray-700 italic max-w-3xl mx-auto">
+          <p className=" text-[17px] sm:text-lg text-gray-700 italic max-w-3xl mx-auto">
             "I believe that every woman deserves to feel supported, informed,
             and empowered as she moves through this important season of life.
             Menopause is not an ending — it is a profound new beginning."

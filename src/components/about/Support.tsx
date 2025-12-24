@@ -7,8 +7,10 @@ const Support = () => {
   return (
     <section className="py-20 grad text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl mb-8 text-center">Who I Support</h2>
-        <p className="text-xl text-teal-100 mb-8 text-center">
+        <h2 className=" text-[30px] sm:text-4xl mb-8 text-center">
+          Who I Support
+        </h2>
+        <p className=" text-[17px] sm:text-xl text-teal-100 mb-8 text-center">
           I work with women who are:
         </p>
 
@@ -43,7 +45,7 @@ const Support = () => {
         <div className="text-center mt-12">
           <a
             href="/coaching"
-            className="inline-flex items-center bg-white text-teal-900 px-8 py-4 rounded-lg hover:bg-teal-50 transition-colors text-lg"
+            className="inline-flex items-center bg-white text-teal-900 px-8 py-4 rounded-lg hover:bg-teal-50 transition-colors text-[15px] sm:text-lg"
           >
             Start Your Journey <ArrowRight className="ml-2" size={20} />
           </a>

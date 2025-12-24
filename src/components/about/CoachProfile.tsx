@@ -5,7 +5,7 @@ import { getImageSrc } from "../../utils/imageUtils";
 const CoachProfile = () => {
   return (
     <section className="py-32 bg-teal-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="xl:container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="max-w-150">
             <div className="bg-white p-6 rounded-2xl shadow-lg">
@@ -21,12 +21,14 @@ const CoachProfile = () => {
             <div className="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm mb-6 w-fit capitalize">
               Meet Your Coach
             </div>
-            <h2 className="text-4xl mb-4 text-primary">Grace Ale-Dare</h2>
-            <p className="text-xl text-teal-700 mb-6">
+            <h2 className=" text-[30px] sm:text-4xl mb-4 text-primary">
+              Grace Ale-Dare
+            </h2>
+            <p className=" text-[18px] sm:text-xl text-teal-700 mb-6">
               Registered Health Coach & Certified Menopause Coach
             </p>
 
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <p className=" text-[16px] sm:text-lg text-gray-700 leading-relaxed mb-6">
               Hello, I'm Grace Ale-Dare, a Registered Health Coach and Certified
               Menopause Coach dedicated to supporting women through the
               emotional, physical, and hormonal changes of midlife.
@@ -83,7 +85,7 @@ const CoachProfile = () => {
               </div>
             </div>
 
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className=" text-[17px] sm:text-lg text-gray-700 leading-relaxed">
               Over the years, I've witnessed how deeply menopause and midlife
               transitions can affect a woman's identity, confidence, and daily
               life. My mission is to transform that experience into a journey of

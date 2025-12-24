@@ -245,7 +245,9 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Contact Information */}
           <div className="lg:col-span-1">
-            <h2 className="text-3xl mb-6 text-teal-900">Contact Information</h2>
+            <h2 className=" text-[25px] sm:text-3xl mb-6 text-teal-900">
+              Contact Information
+            </h2>
             <p className="text-gray-700 mb-8 leading-relaxed">
               I'm here to support you on your wellness journey. Reach out to
               book a discovery call, ask questions, or learn more about how I
@@ -258,12 +260,14 @@ const ContactForm = () => {
                   <Mail className="text-teal-700" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg mb-0.5 text-teal-900">Email</h3>
+                  <h3 className="text-[16px] sm:text-lg mb-0.5 text-teal-900">
+                    Email
+                  </h3>
                   <a
-                    href="mailto:Shefahealthcoachingsm@gmail.com"
-                    className="text-gray-700 hover:text-teal-700"
+                    href="mailto:Shefahealthcoaching@gmail.com"
+                    className="text-gray-700 hover:text-teal-700 text-[13px] sm:text-[16px] "
                   >
-                    Shefahealthcoachingsm@gmail.com
+                    Shefahealthcoaching@gmail.com
                   </a>
                 </div>
               </div>
@@ -273,8 +277,12 @@ const ContactForm = () => {
                   <Phone className="text-orange-600" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg mb-0.5 text-teal-900">Phone</h3>
-                  <p className="text-gray-700">Available for consultations</p>
+                  <h3 className=" text-[16px] sm:text-lg mb-0.5 text-teal-900">
+                    Phone
+                  </h3>
+                  <p className="text-gray-700  text-[13px] sm:text-[16px] ">
+                    Available for consultations
+                  </p>
                 </div>
               </div>
 
@@ -283,8 +291,10 @@ const ContactForm = () => {
                   <MapPin className="text-teal-700" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg mb-0.5 text-teal-900">Location</h3>
-                  <p className="text-gray-700">
+                  <h3 className=" text-[16px] sm:text-lg mb-0.5 text-teal-900">
+                    Location
+                  </h3>
+                  <p className="text-gray-700  text-[13px] sm:text-[16px] ">
                     38 London Road, Tilbury RM18 8DU, United Kingdom
                   </p>
                 </div>
@@ -295,9 +305,15 @@ const ContactForm = () => {
                   <Clock className="text-orange-600" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg mb-1 text-teal-900">Response Time</h3>
-                  <p className="text-gray-700">Within 24-48 hours</p>
-                  <p className="text-sm text-gray-600 mt-1">Monday - Friday</p>
+                  <h3 className="text-[16px] sm:text-lg mb-1 text-teal-900">
+                    Response Time
+                  </h3>
+                  <p className="text-gray-700  text-[13px] sm:text-[16px] ">
+                    Within 24-48 hours
+                  </p>
+                  <p className=" text-[13px] sm:text-[16px]  text-gray-600 mt-1">
+                    Monday - Friday
+                  </p>
                 </div>
               </div>
             </div>
@@ -316,7 +332,9 @@ const ContactForm = () => {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <div className="bg-linear-to-br from-teal-50 to-white border-2 border-teal-100 rounded-2xl p-8 shadow-lg">
-              <h2 className="text-3xl mb-6 text-teal-900">Send Me a Message</h2>
+              <h2 className=" text-[21px] sm:text-3xl mb-6 text-teal-900">
+                Send Me a Message
+              </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
@@ -471,7 +489,10 @@ const ContactForm = () => {
                   ) : (
                     <>
                       <Send className="mr-2" size={20} />
-                      Send Message
+                      <p className="text-[13px] sm:text-[18px]">
+                        {" "}
+                        Send Message
+                      </p>
                     </>
                   )}
                 </button>
