@@ -104,7 +104,7 @@ const ContactForm = () => {
 
       // Prepare the API request payload
       const payload = {
-        email: "wholenesshavenweb@gmail.com", // Your email to receive messages
+        email: "Shefahealthcoaching@gmail.com", // Your email to receive messages
         subject: `New Contact Form: ${
           formData.subject || "General Inquiry"
         } - ${formData.name}`,
@@ -163,7 +163,7 @@ const ContactForm = () => {
         email: userEmail,
         subject: "Thank You for Reaching Out!",
         sender_name: "Shefa Health Coaching",
-        reply_to: "wholenesshavenweb@gmail.com",
+        reply_to: "Shefahealthcoaching@gmail.com",
         reply_name: "Shefa Health Coaching",
         body: `
           <html>

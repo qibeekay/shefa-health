@@ -104,7 +104,7 @@ const Footer = () => {
               Get in Touch
             </h4>
             <div className="space-y-3 text-sm text-primary-foreground/70">
-              <p>Shefahealthcoachingsm@gmail.com</p>
+              <p>Shefahealthcoaching@gmail.com</p>
               <p>07428697038</p>
               <p>
                 <span className="font-bold">Address:</span> 38 london road

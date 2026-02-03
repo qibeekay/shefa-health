@@ -46,6 +46,13 @@ const Credential = () => {
               className="w-full max-w-55 mx-auto h-auto"
             />
           </div>
+          <div>
+            <img
+              src={getImageSrc("she.png")}
+              alt="Association of Naturopathic Practitioners - Health Coach"
+              className="w-full max-w-55 mx-auto h-auto"
+            />
+          </div>
         </div>
 
         <div className="text-center mt-12">
